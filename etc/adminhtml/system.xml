@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magelearn" translate="label" sortOrder="400">
+            <label>Magelearn Modules</label>
+        </tab>
+        <section id="swatch" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Dynamic Image Upload</label>
+            <tab>magelearn</tab>
+            <resource>Magelearn_DynamicFileUpload::config</resource>
+            <group id="dynamic_row_image" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="images" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Dynamic Images</label>
+                    <comment></comment>
+                    <frontend_model>Magelearn\DynamicFileUpload\Block\Adminhtml\Form\Field\ImageFieldsList</frontend_model>
+                    <backend_model>Magelearn\DynamicFileUpload\Model\Config\Backend\Serialized\ImageArraySerialized</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

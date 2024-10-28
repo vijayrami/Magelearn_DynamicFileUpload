@@ -1,0 +1,40 @@
+{
+    "name": "magelearn/magento2-module-dynamic-file-upload",
+    "description": "The Dynamic Row Image Upload Magento module enables administrators to upload and manage multiple images directly in Admin System Configuration with dynamic rows.",
+    "type": "magento2-module",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Vijay Rami",
+            "email": "vijaymrami@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "version":"1.0",
+    "require": {
+        "php": ">=8.0.0"
+    },
+    "repositories": [
+	{
+	    "type": "package",
+	    "package": {
+	        "name": "magelearn/magento2-module-dynamic-file-upload",
+	        "version": "1.0",
+	        "source": {
+	            "url": "https://github.com/vijayrami/Magelearn_DynamicFileUpload.git",
+	            "type": "git",
+	            "reference": "main"
+	        }
+	    }
+	}
+	],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Magelearn\\DynamicFileUpload\\": ""
+        }
+    }
+}

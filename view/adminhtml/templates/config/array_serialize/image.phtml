@@ -1,0 +1,49 @@
+<?php
+/*** @var \Magelearn\DynamicFileUpload\Block\Adminhtml\ImageButton $block */
+$css = $block->getAssertRepository()->createAsset("Magelearn_DynamicFileUpload::css/image_button.css");
+?>
+<link rel="stylesheet" type="text/css" media="all" href="<?php /* @escapeNotVerified */echo $css->getUrl() ?>"/>
+
+<div class="upload-file" data-id="<?=$block->getId()?>">
+    <div class="upload-file__block upload-file__block_first">
+        <img class="upload-file__block__img" id="swatch_image_image_<?= $block->getId() ?>" src="">
+    </div>
+    <div class="upload-file__block">
+        <input class="upload-file__input" hidden type="file" name="<?= $block->getName() ?>" id="swatch_image_input_<?= $block->getId() ?>" value=""/>
+        <label class="upload-file__label" for="swatch_image_input_<?= $block->getId() ?>">
+            <?= __("File") ?>
+        </label>
+    </div>
+    <input class="upload-file__input" type="hidden" id="<?=$block->getId()?>">
+</div>
+
+
+<script type="text/javascript">
+    require(["jquery"], function (jq) {
+        jq(function () {
+        	const id = "<?=$block->getId()?>"
+            const imageId = "swatch_image_image_<?=$block->getId()?>"
+            const data = jq("#" + id).val();
+            const image_url = "<?=$block->getImageUrl()?>"
+            console.log(data, id);
+            if (data) {
+                jq("#" + imageId).attr("src", image_url + data)
+                jq("#" + imageId).attr("value", data)
+            }
+        	// Handle file input change event
+            jq("#swatch_image_input_<?= $block->getId() ?>").on("change", function (event) {
+                const file = event.target.files[0]; // Get the uploaded file
+                if (file) {
+                    const reader = new FileReader(); // Create a FileReader to read the file
+
+                    reader.onload = function (e) {
+                        const imageId = "swatch_image_image_<?= $block->getId() ?>";
+                        jq("#" + imageId).attr("src", e.target.result); // Set the image src to the uploaded file
+                    };
+
+                    reader.readAsDataURL(file); // Read the file as a data URL
+                }
+            });
+        });
+    });
+</script>
